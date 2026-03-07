@@ -9,5 +9,4 @@ export interface Transaction {
   date: string;
 }
 
-// Record keyed by category id → budget limit
 export type Budget = Record<string, number>;

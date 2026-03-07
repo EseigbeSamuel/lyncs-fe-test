@@ -31,16 +31,10 @@ function TxnRow({ txn, onEdit, onDelete }: TxnRowProps) {
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <p
-              className="text-sm font-medium truncate"
-              style={{ color: "#1A1610" }}
-            >
+            <p className="text-sm font-medium truncate text-darker">
               {txn.description}
             </p>
-            <p
-              className="text-xs mt-0.5 font-mono"
-              style={{ color: "#B0A898" }}
-            >
+            <p className="text-xs mt-0.5 font-mono text-light">
               {cat.label} · {formatDate(txn.date)}
             </p>
           </div>
@@ -60,7 +54,7 @@ function TxnRow({ txn, onEdit, onDelete }: TxnRowProps) {
           onClick={() => onEdit(txn)}
           className="p-1.5 rounded-lg hover:bg-stone-100 transition-colors"
         >
-          <Pencil size={13} style={{ color: "#9A9082" }} />
+          <Pencil size={13} className="text-muted" />
         </button>
         {confirmDelete ? (
           <button
@@ -76,7 +70,7 @@ function TxnRow({ txn, onEdit, onDelete }: TxnRowProps) {
             onBlur={() => setTimeout(() => setConfirmDelete(false), 200)}
             className="p-1.5 rounded-lg hover:bg-red-50 transition-colors"
           >
-            <Trash2 size={13} style={{ color: "#9A9082" }} />
+            <Trash2 size={13} className="text-muted" />
           </button>
         )}
       </div>
@@ -110,16 +104,13 @@ export default function TransactionList({
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display text-xl">Recent transactions</h2>
-        <span
-          className="text-xs font-mono px-2 py-1 rounded-full"
-          style={{ background: "#F5F0E8", color: "#9A9082" }}
-        >
+        <span className="text-xs font-mono px-2 py-1 rounded-full bg-cream text-muted">
           {transactions.length} total
         </span>
       </div>
 
       {transactions.length === 0 ? (
-        <p className="text-sm py-6 text-center" style={{ color: "#B0A898" }}>
+        <p className="text-sm py-6 text-center text-light">
           No transactions this month yet.
         </p>
       ) : (
@@ -137,8 +128,7 @@ export default function TransactionList({
           {sorted.length > 8 && (
             <button
               onClick={() => setShowAll((v) => !v)}
-              className="w-full mt-3 py-2 text-sm rounded-xl transition-colors"
-              style={{ color: "#7C9A82", background: "#F5F0E8" }}
+              className="w-full mt-3 py-2 text-sm rounded-xl transition-colors accent-green bg-cream"
             >
               {showAll ? "Show less" : `Show all ${sorted.length} transactions`}
             </button>

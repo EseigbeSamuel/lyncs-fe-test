@@ -61,7 +61,7 @@ export default function MonthlyBar({ transactions }: MonthlyBarProps) {
       className="card p-6 animate-slide-up"
       style={{ animationDelay: "200ms" }}
     >
-      <h2 className="font-display text-xl mb-4">6-month overview</h2>
+      <h2 className="font-display text-xl mb-4">6 month overview</h2>
       <ResponsiveContainer width="100%" height={200}>
         <BarChart data={data} barCategoryGap="30%" barGap={2}>
           <CartesianGrid
@@ -114,18 +114,14 @@ export default function MonthlyBar({ transactions }: MonthlyBarProps) {
             className="w-2.5 h-2.5 rounded-sm"
             style={{ background: "#7C9A82" }}
           />
-          <span className="text-xs font-mono" style={{ color: "#9A9082" }}>
-            Income
-          </span>
+          <span className="text-xs font-mono text-muted">Income</span>
         </div>
         <div className="flex items-center gap-1.5">
           <div
             className="w-2.5 h-2.5 rounded-sm"
             style={{ background: "#C4622D" }}
           />
-          <span className="text-xs font-mono" style={{ color: "#9A9082" }}>
-            Expenses
-          </span>
+          <span className="text-xs font-mono text-muted">Expenses</span>
         </div>
       </div>
     </div>

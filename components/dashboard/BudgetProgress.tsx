@@ -29,17 +29,14 @@ function BudgetRow({ category, spent, limit, onSetBudget }: BudgetRowProps) {
       {/* Icon + label */}
       <div className="flex items-center gap-2 w-36 shrink-0">
         <span className="text-lg">{cat.icon}</span>
-        <span
-          className="text-sm font-medium truncate"
-          style={{ color: "#3A3530" }}
-        >
+        <span className="text-sm font-medium truncate text-dark-text">
           {cat.label}
         </span>
       </div>
 
       {/* Progress bar */}
       <div className="flex-1">
-        <div className="h-2 rounded-full" style={{ background: "#EDE8DC" }}>
+        <div className="h-2 rounded-full bg-light-border">
           <div
             className="h-2 rounded-full progress-bar transition-all"
             style={{
@@ -49,14 +46,11 @@ function BudgetRow({ category, spent, limit, onSetBudget }: BudgetRowProps) {
           />
         </div>
         <div className="flex justify-between mt-1">
-          <span
-            className="text-xs font-mono"
-            style={{ color: over ? "#C4622D" : "#9A9082" }}
-          >
+          <span className="text-xs font-mono text-muted">
             {formatCurrency(spent)} {over && "⚠️ over"}
           </span>
           {limit > 0 && (
-            <span className="text-xs font-mono" style={{ color: "#B0A898" }}>
+            <span className="text-xs font-mono text-light">
               / {formatCurrency(limit)}
             </span>
           )}
@@ -66,9 +60,7 @@ function BudgetRow({ category, spent, limit, onSetBudget }: BudgetRowProps) {
       {/* Budget set button */}
       {editing ? (
         <div className="flex items-center gap-1 shrink-0">
-          <span className="text-sm" style={{ color: "#9A9082" }}>
-            $
-          </span>
+          <span className="text-sm text-muted">$</span>
           <input
             autoFocus
             className="input-field w-20 py-1 px-2 text-sm"
@@ -92,8 +84,7 @@ function BudgetRow({ category, spent, limit, onSetBudget }: BudgetRowProps) {
             setVal(limit?.toString() ?? "");
             setEditing(true);
           }}
-          className="text-xs shrink-0 py-1 px-3 rounded-lg transition-colors"
-          style={{ color: "#9A9082", background: "#F5F0E8" }}
+          className="text-xs shrink-0 py-1 px-3 rounded-lg transition-colors text-muted bg-cream"
         >
           {limit > 0 ? "Edit" : "Set budget"}
         </button>

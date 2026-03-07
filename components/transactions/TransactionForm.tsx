@@ -91,10 +91,7 @@ export default function TransactionForm({
         </div>
 
         {/* Type toggle */}
-        <div
-          className="flex gap-2 p-1 rounded-xl mb-5"
-          style={{ background: "#F5F0E8" }}
-        >
+        <div className="flex gap-2 p-1 rounded-xl mb-5 bg-cream">
           {(["expense", "income"] as TransactionType[]).map((t) => (
             <button
               key={t}
@@ -117,18 +114,12 @@ export default function TransactionForm({
 
         {/* Amount */}
         <div className="mb-4">
-          <label
-            className="block text-xs font-mono uppercase tracking-widest mb-1.5"
-            style={{ color: "#9A9082" }}
-          >
+          <label className="block text-xs font-mono uppercase tracking-widest mb-1.5 text-muted">
             Amount
           </label>
           <div className="relative">
-            <span
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-mono"
-              style={{ color: "#9A9082" }}
-            >
-              $
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-mono text-muted">
+              ₦
             </span>
             <input
               type="number"
@@ -145,10 +136,7 @@ export default function TransactionForm({
 
         {/* Category */}
         <div className="mb-4">
-          <label
-            className="block text-xs font-mono uppercase tracking-widest mb-1.5"
-            style={{ color: "#9A9082" }}
-          >
+          <label className="block text-xs font-mono uppercase tracking-widest mb-1.5 text-muted">
             Category
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -188,10 +176,7 @@ export default function TransactionForm({
 
         {/* Description */}
         <div className="mb-4">
-          <label
-            className="block text-xs font-mono uppercase tracking-widest mb-1.5"
-            style={{ color: "#9A9082" }}
-          >
+          <label className="block text-xs font-mono uppercase tracking-widest mb-1.5 text-muted">
             Description
           </label>
           <input
@@ -205,10 +190,7 @@ export default function TransactionForm({
 
         {/* Date */}
         <div className="mb-6">
-          <label
-            className="block text-xs font-mono uppercase tracking-widest mb-1.5"
-            style={{ color: "#9A9082" }}
-          >
+          <label className="block text-xs font-mono uppercase tracking-widest mb-1.5 text-muted">
             Date
           </label>
           <input

@@ -40,15 +40,13 @@ export default function Home() {
   if (!isLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="font-display text-2xl" style={{ color: "#B0A898" }}>
-          Loading…
-        </div>
+        <div className="font-display text-2xl text-light">Loading…</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen" style={{ background: "#F5F0E8" }}>
+    <div className="min-h-screen bg-cream">
       <header
         className="sticky top-0 z-40 border-b"
         style={{
@@ -62,7 +60,7 @@ export default function Home() {
             <h1 className="font-display text-2xl leading-none">
               Finance Snapshot
             </h1>
-            <p className="text-xs font-mono mt-1" style={{ color: "#9A9082" }}>
+            <p className="text-xs font-mono mt-1 text-muted">
               {getCurrentMonthName()}
             </p>
           </div>
@@ -76,10 +74,10 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-8 space-y-6">
+      <main className="max-w-5xl px-3 lg:px-6 py-8 space-y-6">
         <SummaryCards income={income} expenses={expenses} balance={balance} />
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-2 gap-4">
           <SpendingDonut expensesByCategory={expensesByCategory} />
           <MonthlyBar transactions={transactions} />
         </div>
@@ -98,7 +96,7 @@ export default function Home() {
       </main>
 
       <footer className="text-center py-8">
-        <p className="text-xs font-mono text-[#C8BFA8] ">
+        <p className="text-xs font-mono text-light">
           Finance Snapshot — your money, at a glance
         </p>
       </footer>

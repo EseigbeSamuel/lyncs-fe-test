@@ -1,39 +1,51 @@
-/* @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap");
-
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 @import "tailwindcss";
 :root {
   --font-display: "DM Serif Display", serif;
   --font-body: "DM Sans", sans-serif;
   --font-mono: "DM Mono", monospace;
+
+  /* Primary Colors */
+  --color-cream: #f5f0e8;
+  --color-dark: #0d0d0d;
+  --color-dark-hover: #2a2a2a;
+
+  /* Text Colors */
+  --color-text-muted: #9a9082;
+  --color-text-light: #b0a898;
+  --color-text-dark: #3a3530;
+  --color-text-darker: #1a1610;
+
+  /* UI Colors */
+  --color-input-bg: #f8f5ef;
+  --color-input-border: #e0d8cc;
+  --color-select-text: #6a6058;
+  --color-border-light: #ede8dc;
+  --color-scrollbar: #c8bfa8;
+  --color-white: #ffffff;
+
+  /* Semantic Colors */
+  --color-income: #3d7a5a;
+  --color-expense: #c4622d;
+  --color-accent-green: #7c9a82;
+
+  /* Category Colors */
+  --color-food: #c4622d;
+  --color-transport: #7c9a82;
+  --color-entertainment: #7b6ba8;
+  --color-bills: #c9a84c;
+  --color-shopping: #c47c8a;
+  --color-health: #5a9aaf;
+  --color-other: #888888;
+
+  /* Category Background Colors */
+  --color-food-bg: #fae8dc;
+  --color-transport-bg: #dcf0e2;
+  --color-entertainment-bg: #eae6f5;
+  --color-bills-bg: #fbf3dc;
+  --color-shopping-bg: #f5e0e4;
+  --color-health-bg: #ddf0f6;
+  --color-income-bg: #d6f0e2;
+  --color-other-bg: #ebebeb;
 }
 
 * {
@@ -47,7 +59,6 @@ body {
   min-height: 100vh;
 }
 
-/* Grain overlay */
 body::before {
   content: "";
   position: fixed;
@@ -68,7 +79,6 @@ body::before {
   font-family: var(--font-mono);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -81,7 +91,6 @@ body::before {
   border-radius: 3px;
 }
 
-/* Animations */
 @keyframes slideUp {
   from {
     transform: translateY(16px);
@@ -126,7 +135,6 @@ body::before {
   animation: scaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Staggered children */
 .stagger > *:nth-child(1) {
   animation-delay: 0ms;
 }
@@ -146,7 +154,6 @@ body::before {
   animation-delay: 300ms;
 }
 
-/* Card base */
 .card {
   background: #ffffff;
   border-radius: 16px;
@@ -156,7 +163,6 @@ body::before {
     0 0 0 0.5px rgba(0, 0, 0, 0.04);
 }
 
-/* Modal backdrop */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -169,13 +175,11 @@ body::before {
   padding: 1rem;
 }
 
-/* Progress bar animation */
 .progress-bar {
   animation: progressFill 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 0.2s;
 }
 
-/* Input styles */
 .input-field {
   width: 100%;
   background: #f8f5ef;
@@ -202,7 +206,6 @@ select.input-field {
   cursor: pointer;
 }
 
-/* Button styles */
 .btn-primary {
   background: #0d0d0d;
   color: #f5f0e8;
@@ -240,4 +243,99 @@ select.input-field {
 .btn-ghost:hover {
   border-color: #b0a898;
   color: #0d0d0d;
+}
+
+/* Color Utility Classes */
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-light {
+  color: var(--color-text-light);
+}
+.text-dark-text {
+  color: var(--color-text-dark);
+}
+.text-darker {
+  color: var(--color-text-darker);
+}
+
+/* Semantic Text */
+.text-income {
+  color: var(--color-income);
+}
+.text-expense {
+  color: var(--color-expense);
+}
+
+/* Background Colors */
+.bg-cream {
+  background-color: var(--color-cream);
+}
+.bg-input {
+  background-color: var(--color-input-bg);
+}
+.bg-subtle {
+  background-color: var(--color-cream);
+}
+.bg-light-border {
+  background-color: var(--color-border-light);
+}
+
+/* Category Backgrounds */
+.bg-food {
+  background-color: var(--color-food-bg);
+}
+.bg-transport {
+  background-color: var(--color-transport-bg);
+}
+.bg-entertainment {
+  background-color: var(--color-entertainment-bg);
+}
+.bg-bills {
+  background-color: var(--color-bills-bg);
+}
+.bg-shopping {
+  background-color: var(--color-shopping-bg);
+}
+.bg-health {
+  background-color: var(--color-health-bg);
+}
+.bg-income {
+  background-color: var(--color-income-bg);
+}
+
+/* Border Colors */
+.border-input {
+  border-color: var(--color-input-border);
+}
+
+/* Accent Colors */
+.accent-income {
+  color: var(--color-income);
+}
+.accent-expense {
+  color: var(--color-expense);
+}
+.accent-green {
+  color: var(--color-accent-green);
+}
+
+/* Category Text Color Utilities */
+.text-cat-food {
+  color: var(--color-food);
+}
+.text-cat-transport {
+  color: var(--color-transport);
+}
+.text-cat-entertainment {
+  color: var(--color-entertainment);
+}
+.text-cat-bills {
+  color: var(--color-bills);
+}
+.text-cat-shopping {
+  color: var(--color-shopping);
+}
+.text-cat-health {
+  color: var(--color-health);
 }

@@ -26,8 +26,7 @@ const CustomTooltip = (props: TooltipProps<any>) => {
         {d.icon} {d.name}
       </span>
       <div className="font-mono text-sm mt-0.5" style={{ color: d.fill }}>
-        {formatCurrency(d.value)}{" "}
-        <span style={{ color: "#B0A898" }}>({d.pct}%)</span>
+        {formatCurrency(d.value)} <span className="text-light">({d.pct}%)</span>
       </div>
     </div>
   );
@@ -58,7 +57,7 @@ export default function SpendingDonut({
         className="card p-6 flex items-center justify-center h-64 animate-slide-up"
         style={{ animationDelay: "180ms" }}
       >
-        <p className="text-sm" style={{ color: "#B0A898" }}>
+        <p className="text-sm text-light">
           No expenses yet — add some transactions!
         </p>
       </div>
@@ -102,17 +101,12 @@ export default function SpendingDonut({
                   className="w-2.5 h-2.5 rounded-full shrink-0"
                   style={{ background: d.fill }}
                 />
-                <span className="text-sm truncate" style={{ color: "#3A3530" }}>
+                <span className="text-sm truncate text-dark-text">
                   {d.icon} {d.name}
                 </span>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <span
-                  className="text-xs font-mono"
-                  style={{ color: "#B0A898" }}
-                >
-                  {d.pct}%
-                </span>
+                <span className="text-xs font-mono text-light">{d.pct}%</span>
                 <span className="text-sm font-mono font-medium">
                   {formatCurrency(d.value)}
                 </span>
