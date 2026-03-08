@@ -1,6 +1,7 @@
 "use client";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import type { TooltipProps } from "recharts";
+import type { LucideIcon } from "lucide-react";
 import { getCategoryById } from "@/lib/categories";
 import { formatCurrency } from "@/lib/utils";
 
@@ -12,18 +13,20 @@ interface DonutEntry {
   name: string;
   value: number;
   fill: string;
-  icon: string;
+  icon: LucideIcon;
   pct: number;
 }
 
-const CustomTooltip = (props: TooltipProps<any>) => {
-  const { active, payload } = props as any;
+const CustomTooltip = (props: any) => {
+  const { active, payload } = props;
   if (!active || !payload?.length) return null;
   const d = payload[0].payload as DonutEntry;
+  const Icon = d.icon;
   return (
     <div className="card px-3 py-2">
-      <span className="text-sm font-medium">
-        {d.icon} {d.name}
+      <span className="text-sm font-medium flex items-center gap-1.5">
+        <Icon size={14} color={d.fill} />
+        {d.name}
       </span>
       <div className="font-mono text-sm mt-0.5" style={{ color: d.fill }}>
         {formatCurrency(d.value)} <span className="text-light">({d.pct}%)</span>
@@ -70,7 +73,7 @@ export default function SpendingDonut({
       style={{ animationDelay: "180ms" }}
     >
       <h2 className="font-display text-xl mb-4">Where it goes</h2>
-      <div className="flex gap-6 items-center">
+      <div className="md:flex w-full gap-6 items-center">
         <div style={{ width: 180, height: 180, flexShrink: 0 }}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -93,26 +96,30 @@ export default function SpendingDonut({
           </ResponsiveContainer>
         </div>
 
-        <div className="flex-1 space-y-2 min-w-0">
-          {data.map((d, i) => (
-            <div key={i} className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2 min-w-0">
-                <div
-                  className="w-2.5 h-2.5 rounded-full shrink-0"
-                  style={{ background: d.fill }}
-                />
-                <span className="text-sm truncate text-dark-text">
-                  {d.icon} {d.name}
-                </span>
+        <div className="space-y-2 min-w-0">
+          {data.map((d, i) => {
+            const Icon = d.icon;
+            return (
+              <div key={i} className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{ background: d.fill }}
+                  />
+                  <Icon size={14} color={d.fill} className="shrink-0" />
+                  <span className="text-sm truncate text-dark-text">
+                    {d.name}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="text-xs font-mono text-light">{d.pct}%</span>
+                  <span className="text-sm font-mono font-medium">
+                    {formatCurrency(d.value)}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="text-xs font-mono text-light">{d.pct}%</span>
-                <span className="text-sm font-mono font-medium">
-                  {formatCurrency(d.value)}
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

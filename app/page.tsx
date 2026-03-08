@@ -1,15 +1,23 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Plus } from "lucide-react";
 import { useBudget } from "@/hooks/useBudget";
 import { getCurrentMonthName } from "@/lib/utils";
 import { useTransactions } from "@/hooks/useTransaction";
+import { useTransactionModal } from "@/store/useTransactionModal";
 import SummaryCards from "@/components/dashboard/SummaryCard";
-import SpendingDonut from "@/components/charts/SpendingDounut";
-import MonthlyBar from "@/components/charts/MonthlyBar";
 import BudgetProgress from "@/components/dashboard/BudgetProgress";
 import TransactionList from "@/components/transactions/TransactionList";
 import TransactionForm from "@/components/transactions/TransactionForm";
+
+const SpendingDonut = dynamic(
+  () => import("@/components/charts/SpendingDounut"),
+  { ssr: false },
+);
+const MonthlyBar = dynamic(() => import("@/components/charts/MonthlyBar"), {
+  ssr: false,
+});
 
 export default function Home() {
   const {
@@ -23,7 +31,7 @@ export default function Home() {
   } = useTransactions();
 
   const { budgets, setBudget } = useBudget();
-  const [showForm, setShowForm] = useState(false);
+  const { openAdd } = useTransactionModal();
 
   const now = new Date();
   const {
@@ -55,7 +63,7 @@ export default function Home() {
           borderColor: "rgba(0,0,0,0.06)",
         }}
       >
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-3 md:px-6 py-4 flex items-center justify-between">
           <div>
             <h1 className="font-display text-2xl leading-none">
               Finance Snapshot
@@ -65,7 +73,7 @@ export default function Home() {
             </p>
           </div>
           <button
-            onClick={() => setShowForm(true)}
+            onClick={openAdd}
             className="btn-primary flex items-center gap-2"
           >
             <Plus size={16} strokeWidth={2} />
@@ -74,7 +82,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="max-w-5xl px-3 lg:px-6 py-8 space-y-6">
+      <main className="max-w-5xl px-3 mx-auto md:px-6 py-8 space-y-6">
         <SummaryCards income={income} expenses={expenses} balance={balance} />
 
         <div className="grid lg:grid-cols-2 gap-4">
@@ -90,7 +98,6 @@ export default function Home() {
 
         <TransactionList
           transactions={monthTxns}
-          onUpdate={updateTransaction}
           onDelete={deleteTransaction}
         />
       </main>
@@ -101,12 +108,7 @@ export default function Home() {
         </p>
       </footer>
 
-      {showForm && (
-        <TransactionForm
-          onClose={() => setShowForm(false)}
-          onSave={addTransaction}
-        />
-      )}
+      <TransactionForm onSave={addTransaction} onUpdate={updateTransaction} />
     </div>
   );
 }

@@ -25,42 +25,53 @@ function BudgetRow({ category, spent, limit, onSetBudget }: BudgetRowProps) {
   };
 
   return (
-    <div className="flex items-center gap-4 py-3 border-b border-stone-100 last:border-0">
-      {/* Icon + label */}
-      <div className="flex items-center gap-2 w-36 shrink-0">
-        <span className="text-lg">{cat.icon}</span>
-        <span className="text-sm font-medium truncate text-dark-text">
-          {cat.label}
-        </span>
-      </div>
+    <div className=" py-3 border-b border-stone-100 last:border-0">
+      <div className="flex items-center gap-4 flex-1">
+        <div className="flex items-center gap-2 w-36 shrink-0">
+          <cat.icon size={18} color={cat.color} />
 
-      {/* Progress bar */}
-      <div className="flex-1">
-        <div className="h-2 rounded-full bg-light-border">
-          <div
-            className="h-2 rounded-full progress-bar transition-all"
-            style={{
-              width: `${pct}%`,
-              background: over ? "#C4622D" : cat.color,
-            }}
-          />
-        </div>
-        <div className="flex justify-between mt-1">
-          <span className="text-xs font-mono text-muted">
-            {formatCurrency(spent)} {over && "⚠️ over"}
+          <span className="text-sm font-medium truncate text-dark-text">
+            {cat.label}
           </span>
-          {limit > 0 && (
-            <span className="text-xs font-mono text-light">
-              / {formatCurrency(limit)}
-            </span>
-          )}
         </div>
+
+        <div className="flex-1">
+          <div className="h-2 rounded-full bg-light-border">
+            <div
+              className="h-2 rounded-full progress-bar transition-all"
+              style={{
+                width: `${pct}%`,
+                background: over ? "#C4622D" : cat.color,
+              }}
+            />
+          </div>
+          <div className="flex justify-between mt-1">
+            <span
+              className={`text-xs font-mono text-muted ${over && "text-expense"}`}
+            >
+              {formatCurrency(spent)} {over && " over budject"}
+            </span>
+            {limit > 0 && (
+              <span className="text-xs font-mono text-light">
+                / {formatCurrency(limit)}
+              </span>
+            )}
+          </div>
+        </div>
+        <button
+          onClick={() => {
+            setVal(limit?.toString() ?? "");
+            setEditing(true);
+          }}
+          className="text-xs shrink-0 py-1 px-3 rounded-lg transition-colors text-muted bg-cream"
+        >
+          {limit > 0 ? "Edit" : "Set budget"}
+        </button>
       </div>
 
-      {/* Budget set button */}
-      {editing ? (
+      {editing && (
         <div className="flex items-center gap-1 shrink-0">
-          <span className="text-sm text-muted">$</span>
+          <span className="text-sm text-muted">₦</span>
           <input
             autoFocus
             className="input-field w-20 py-1 px-2 text-sm"
@@ -78,16 +89,6 @@ function BudgetRow({ category, spent, limit, onSetBudget }: BudgetRowProps) {
             Set
           </button>
         </div>
-      ) : (
-        <button
-          onClick={() => {
-            setVal(limit?.toString() ?? "");
-            setEditing(true);
-          }}
-          className="text-xs shrink-0 py-1 px-3 rounded-lg transition-colors text-muted bg-cream"
-        >
-          {limit > 0 ? "Edit" : "Set budget"}
-        </button>
       )}
     </div>
   );

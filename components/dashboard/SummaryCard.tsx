@@ -43,7 +43,7 @@ export default function SummaryCards({
   const savingsRate = income > 0 ? Math.round((balance / income) * 100) : 0;
 
   return (
-    <div className="grid lg:grid-cols-3 gap-4 stagger">
+    <div className="grid md:grid-cols-3 gap-4 stagger">
       <StatCard
         label="Income"
         value={income}

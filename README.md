@@ -102,27 +102,6 @@ types/
 
 ---
 
-## Types
-
-All shared types live in `types/index.ts` and are imported across hooks and components:
-
-```typescript
-export type TransactionType = "income" | "expense";
-
-export interface Transaction {
-  id: string;
-  type: TransactionType;
-  category: string;
-  amount: number;
-  description: string;
-  date: string; // ISO string
-}
-
-export type Budget = Record<string, number>; // category id → limit in dollars
-```
-
----
-
 ## Key Features
 
 **Dashboard**
@@ -199,14 +178,14 @@ const {
 
 | Category          | Icon | Color     |
 | ----------------- | ---- | --------- |
-| Food & Dining     | 🍜   | `#C4622D` |
-| Transport         | 🚌   | `#7C9A82` |
-| Entertainment     | 🎭   | `#7B6BA8` |
-| Bills & Utilities | ⚡   | `#C9A84C` |
-| Shopping          | 🛍️   | `#C47C8A` |
-| Health            | 💊   | `#5A9AAF` |
-| Income            | 💰   | `#3D7A5A` |
-| Other             | 📦   | `#888888` |
+| Food & Dining     | Utensils | `#C4622D` |
+| Transport         | Bus   | `#7C9A82` |
+| Entertainment     | Music | `#7B6BA8` |
+| Bills & Utilities | Zap   | `#C9A84C` |
+| Shopping          | ShoppingBag | `#C47C8A` |
+| Health            | Pill  | `#5A9AAF` |
+| Income            | DollarSign | `#3D7A5A` |
+| Other             | Package | `#888888` |
 
 ---
 
