@@ -46,8 +46,8 @@ A simple, clean finance tracker to keep tabs on your income, expenses, and spend
 
 ## What's inside
 
-- **Next.js 16** - Fast, modern React framework
-- **React 19** - UI library
+- **Next.js** - Fast, modern React framework
+- **React** - UI library
 - **Tailwind CSS** - Styling
 - **Recharts** - Beautiful charts and graphs
 - **date-fns** - Date handling
@@ -55,16 +55,16 @@ A simple, clean finance tracker to keep tabs on your income, expenses, and spend
 
 ## Tech Stack
 
-| Tool                    | Purpose                                    |
-| ----------------------- | ------------------------------------------ |
-| Next.js 14 (App Router) | Framework, file-based routing              |
-| TypeScript              | Full type safety across all files          |
-| Recharts                | Donut + bar charts                         |
-| Tailwind CSS            | Utility-first styling                      |
-| Lucide React            | Icons                                      |
-| date-fns                | Date formatting                            |
-| uuid                    | Unique transaction IDs                     |
-| localStorage            | Client-side persistence, no backend needed |
+| Tool                 | Purpose                                    |
+| -------------------- | ------------------------------------------ |
+| Next.js (App Router) | Framework, file-based routing              |
+| TypeScript           | Full type safety across all files          |
+| Recharts             | Donut + bar charts                         |
+| Tailwind CSS         | Utility-first styling                      |
+| Lucide React         | Icons                                      |
+| date-fns             | Date formatting                            |
+| uuid                 | Unique transaction IDs                     |
+| localStorage         | Client-side persistence, no backend needed |
 
 ---
 
@@ -138,24 +138,20 @@ types/
 
 ```typescript
 const {
-  transactions, // Transaction[]
-  isLoaded, // boolean — false during SSR hydration
-  addTransaction, // (data: Omit<Transaction, "id">) => Transaction
-  updateTransaction, // (id: string, data: Omit<Transaction, "id">) => void
-  deleteTransaction, // (id: string) => void
-  getMonthlyStats, // (month: number, year: number) => MonthlyStats
-  getExpensesByCategory, // (month: number, year: number) => Record<string, number>
+  transactions,
+  isLoaded,
+  addTransaction,
+  updateTransaction,
+  deleteTransaction,
+  getMonthlyStats,
+  getExpensesByCategory,
 } = useTransactions();
 ```
 
 ### `useBudget`
 
 ```typescript
-const {
-  budgets, // Budget — Record<string, number>
-  setBudget, // (category: string, amount: number) => void
-  getBudgetStatus, // (category: string, spent: number) => BudgetStatus
-} = useBudget();
+const { budgets, setBudget, getBudgetStatus } = useBudget();
 ```
 
 `getBudgetStatus` returns `{ pct, over, limit, spent }` where `pct` is the 0–100 percentage used to drive progress bar widths.
@@ -176,16 +172,16 @@ const {
 
 ## Categories
 
-| Category          | Icon | Color     |
-| ----------------- | ---- | --------- |
-| Food & Dining     | Utensils | `#C4622D` |
-| Transport         | Bus   | `#7C9A82` |
-| Entertainment     | Music | `#7B6BA8` |
-| Bills & Utilities | Zap   | `#C9A84C` |
+| Category          | Icon        | Color     |
+| ----------------- | ----------- | --------- |
+| Food & Dining     | Utensils    | `#C4622D` |
+| Transport         | Bus         | `#7C9A82` |
+| Entertainment     | Music       | `#7B6BA8` |
+| Bills & Utilities | Zap         | `#C9A84C` |
 | Shopping          | ShoppingBag | `#C47C8A` |
-| Health            | Pill  | `#5A9AAF` |
-| Income            | DollarSign | `#3D7A5A` |
-| Other             | Package | `#888888` |
+| Health            | Pill        | `#5A9AAF` |
+| Income            | DollarSign  | `#3D7A5A` |
+| Other             | Package     | `#888888` |
 
 ---
 
@@ -194,7 +190,6 @@ const {
 - **Month navigation** — currently locked to the current month; add prev/next arrows to browse history
 - **Recurring transactions** — mark a transaction as monthly so it auto-populates
 - **CSV export** — simple one-click data export
-- **Mobile layout** — charts need media query adjustments to stack properly on small screens
 - **Animated number counters** — summary cards that count up on load for a polished feel
 - **Zustand** — replace the two `useState`-based hooks with a single Zustand store for simpler state sharing
 
@@ -207,6 +202,12 @@ const {
 
 ---
 
+## Live Demo
+
+https://finance-tracker-six-dun.vercel.app
+
+---
+
 ## Time Spent
 
-~12 hours across 3 evenings.
+- 12 hours across 3 evenings.
