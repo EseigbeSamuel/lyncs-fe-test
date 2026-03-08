@@ -204,7 +204,7 @@ const { budgets, setBudget, getBudgetStatus } = useBudget();
 
 ## Live Demo
 
-https://finance-tracker-six-dun.vercel.app
+https://financetracker-two-pi.vercel.app
 
 ---
 
