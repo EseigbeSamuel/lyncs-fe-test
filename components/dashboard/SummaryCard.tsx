@@ -64,7 +64,7 @@ export default function SummaryCards({
         accent={balance >= 0 ? "#0D0D0D" : "#C4622D"}
         sub={
           balance >= 0
-            ? `${savingsRate}% savings rate 🎉`
+            ? `${savingsRate}% savings rate`
             : "over budget this month"
         }
         delay={120}
